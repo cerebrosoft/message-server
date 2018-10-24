@@ -17,13 +17,12 @@ public class MessageControllerTest {
 
     @Test
     public void itShouldSaveAndGet() {
-        Message message = new Message();
-        message.setMessage("Hello, world!");
         controller.createMessage("Hello, world!", "Larry");
 
         Iterable<Message> messages = controller.getMessages();
         assertThat(messages).hasSize(1);
         Message saved = messages.iterator().next();
         assertThat(saved.getMessage()).isEqualTo("Hello, world!");
+        assertThat(saved.getName()).isEqualTo("Larry");
     }
 }
